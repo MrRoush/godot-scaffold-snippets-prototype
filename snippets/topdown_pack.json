@@ -1,0 +1,24 @@
+{
+  "pack": "topdown",
+  "godot": "4.7",
+  "snippets": [
+    {
+      "id": "topdown_move4",
+      "title": "Top-down 4-direction movement",
+      "level": 1,
+      "code": "extends CharacterBody2D\n\nvar speed := {{speed}}\n\nfunc _physics_process(delta):\n\t# Capture arrow/WASD-style input actions\n\tvar x := Input.get_axis(\"move_left\", \"move_right\")\n\tvar y := Input.get_axis(\"move_up\", \"move_down\")\n\tvelocity = Vector2(x, y).normalized() * speed\n\tmove_and_slide()\n",
+      "comments": [
+        "Capture arrow/WASD-style input actions"
+      ]
+    },
+    {
+      "id": "topdown_chase",
+      "title": "Enemy chase player by group",
+      "level": 1,
+      "code": "extends CharacterBody2D\n\nvar speed := {{speed}}\n\nfunc _physics_process(delta):\n\t# Find the first player node in group\n\tvar player := get_tree().get_first_node_in_group(\"{{target_group}}\")\n\tif player == null:\n\t\treturn\n\tvar dir := (player.global_position - global_position).normalized()\n\tvelocity = dir * speed\n\tmove_and_slide()\n",
+      "comments": [
+        "Find the first player node in group"
+      ]
+    }
+  ]
+}

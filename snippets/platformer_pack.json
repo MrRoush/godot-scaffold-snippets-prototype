@@ -1,0 +1,24 @@
+{
+  "pack": "platformer",
+  "godot": "4.7",
+  "snippets": [
+    {
+      "id": "platformer_move",
+      "title": "Move left and right",
+      "level": 1,
+      "code": "extends CharacterBody2D\n\nvar speed := {{speed}}\n\nfunc _physics_process(delta):\n\t# Read input and move on X\n\tvar dir := Input.get_axis(\"{{left}}\", \"{{right}}\")\n\tvelocity.x = dir * speed\n\tmove_and_slide()\n",
+      "comments": [
+        "Read input and move on X"
+      ]
+    },
+    {
+      "id": "platformer_jump",
+      "title": "Jump when on floor",
+      "level": 1,
+      "code": "extends CharacterBody2D\n\nvar jump_power := {{jump_power}}\n\nfunc _physics_process(delta):\n\t# Jump only if on floor\n\tif Input.is_action_just_pressed(\"{{jump}}\") and is_on_floor():\n\t\tvelocity.y = jump_power\n\tmove_and_slide()\n",
+      "comments": [
+        "Jump only if on floor"
+      ]
+    }
+  ]
+}
