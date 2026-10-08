@@ -37,12 +37,12 @@ func _on_insert_pressed() -> void:
 	if snippet_list.get_selected_items().is_empty():
 		_error("Select a snippet first.")
 		return
-	var idx := snippet_list.get_selected_items()[0]
+	var idx: int = snippet_list.get_selected_items()[0]
 	var snippet: Dictionary = snippets[idx]
-	var level := level_select.get_selected_id() + 1
-	var code := inserter.render_level(snippet, level)
+	var level: int = level_select.get_selected_id() + 1
+	var code: String = inserter.render_level(snippet, level)
 	# Placeholder defaults for demo preview only.
-	var defaults := {
+	var defaults: Dictionary = {
 		"speed": 220,
 		"jump_power": -420,
 		"left": "move_left",

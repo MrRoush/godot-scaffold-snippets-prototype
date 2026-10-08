@@ -43,7 +43,7 @@ class SnippetLibrary:
 class SnippetInserter:
 	func render_level(snippet: Dictionary, level: int) -> String:
 		var code := str(snippet.get("code", ""))
-		var comments := snippet.get("comments", [])
+		var comments: Array = snippet.get("comments", [])
 		if level <= 1:
 			return code
 		# Level 2: strip most inline helper comments and keep structure.
